@@ -6,7 +6,7 @@ class BoardAdmin(admin.ModelAdmin):
     list_display = ['id', 'title', 'create_time']
 
 class BoardUsersAdmin(admin.ModelAdmin):
-    list_display = ['id', 'user', 'board', 'is_owner', 'is_reader']
+    list_display = ['id','user', 'board', 'is_owner', 'is_reader']
     search_fields = ['user']
 
 class BoardColumnsAdmin(admin.ModelAdmin):

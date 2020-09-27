@@ -5,11 +5,20 @@ class BoardsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Board # указываем с какой моделью и полями будем работать
                            # и использовать в несколькиз views
-        fields = '__all__'# если работаем со всеми полями['id', 'book_title', 'book_author']
+        fields = '__all__'# если работаем со всеми полями['id', 'title', 'create_time']
+
+class BoardUsersSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BoardUsers
+        fields = '__all__'
+class BoardUserExecutorsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BoardUserExecutors
+        fields = '__all__'
 
 class BoardCardsSerializer(serializers.ModelSerializer):
     class Meta:
-        model = BoardCards # указываем с какой моделью и полями будем работать
+        model = BoardUserExecutors # указываем с какой моделью и полями будем работать
                            # и использовать в несколькиз views
         fields = '__all__'# если работаем со всеми полями['board', 'title', 'create_time', 'sort_index', 'column', 'description']
 
@@ -24,7 +33,3 @@ class BoardCardCommentsSerializer(serializers.ModelSerializer):
         fields = '__all__' #['user', 'card','comment', 'create_time']
 
 
-class BoardsListSerialiser(serializers.ModelSerializer):
-    class Meta:
-        model = Board
-        fields = ['id', 'title', 'board_owner']

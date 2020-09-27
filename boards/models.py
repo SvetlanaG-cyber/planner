@@ -56,11 +56,8 @@ class BoardUserExecutors(models.Model):
         verbose_name = "Executor"
         verbose_name_plural = "Executors"
 
-    user = models.CharField(blank=True, null=True, max_length=50, verbose_name="Executor")
+    user = models.ForeignKey(User, default=4, blank=False, null=False, verbose_name='Executor',on_delete=models.CASCADE)
     card = models.ForeignKey(BoardCards, blank=False, null=True, verbose_name='Task', on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.user
 
 class BoardUsers(models.Model):
     class Meta:
@@ -68,7 +65,7 @@ class BoardUsers(models.Model):
         verbose_name = "board user"
         verbose_name_plural = "Board Users"
 
-    user = models.ForeignKey(BoardUserExecutors, default=1, blank=False, null=False, verbose_name='User', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, default=4, blank=False, null=False, verbose_name='User', on_delete=models.CASCADE)
     board = models.ForeignKey(Board, default=1, blank=False, null=False, verbose_name='Board', on_delete=models.CASCADE)
     is_owner = models.BooleanField(default=True, blank=False, verbose_name="Is owner")
     is_reader = models.BooleanField(default=True, blank=False, verbose_name="Is reader only")
@@ -84,7 +81,7 @@ class BoardCardComments(models.Model):
         verbose_name = "Comment"
         verbose_name_plural = "Comments"
 
-    user = models.ForeignKey(BoardUserExecutors, blank=False, null=True, verbose_name='Assigned to', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, default=4, blank=False, null=False, verbose_name='User', on_delete=models.CASCADE)
     card = models.ForeignKey(BoardCards, blank=False, null=True, verbose_name='Task', on_delete=models.CASCADE)
     create_time = models.DateTimeField(auto_now_add=True, verbose_name='Create time')
     comment = models.TextField(blank=True, null=True, verbose_name='Add comment')
