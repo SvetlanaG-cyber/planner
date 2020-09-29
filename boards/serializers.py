@@ -18,7 +18,7 @@ class BoardUserExecutorsSerializer(serializers.ModelSerializer):
 
 class BoardCardsSerializer(serializers.ModelSerializer):
     class Meta:
-        model = BoardUserExecutors # указываем с какой моделью и полями будем работать
+        model = BoardCards # указываем с какой моделью и полями будем работать
                            # и использовать в несколькиз views
         fields = '__all__'# если работаем со всеми полями['board', 'title', 'create_time', 'sort_index', 'column', 'description']
 

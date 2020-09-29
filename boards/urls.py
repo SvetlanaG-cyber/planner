@@ -10,7 +10,7 @@ urlpatterns = [
     #path('list/filter/<int:board_id>/', BoardFilter.as_view()),
     path('card/list/<int:column_id>/', BoardCardsList.as_view()),
     path('card/create/', BoardCardCreate.as_view()),
-    path('card/rud/', BoardCardRUD.as_view()),
+    path('card/rud/<int:column_id>/', BoardCardRUD.as_view()),
     path('user/list/', BoardUsersList.as_view()),
     path('user/create/', BoardUsersCreate.as_view()),
     path('user/rud/', BoardUsersRUD.as_view()),

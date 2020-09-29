@@ -31,7 +31,7 @@ class BoardList(generics.ListAPIView): #:# возвращаем список т�
     #authentication_classes = [TokenAuthentication] # говорит о том что исп токен для авторизации пользователя
     # чтоб не прописывать в каждом классе импортируем по умолчанию в
     serializer_class = BoardsSerializer # пишем название сериалайзера который импортируем
-    permission_classes = [permissions.IsAuthenticated]                                    # используем из файла serializers.py
+    permission_classes = [permissions.IsAuthenticated]    # используем из файла serializers.py
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter, MyCustomFilter] # перечень классов
     search_fields = ['title']#позволяет поиск по части слова
     filterset_fields = ['id']#поиск по полному значению поля
@@ -64,6 +64,7 @@ class BoardCardsList(generics.ListAPIView):
 class BoardCardRUD(generics.RetrieveUpdateDestroyAPIView):
     queryset = BoardCards.objects.all()
     serializer_class = BoardCardsSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 class BoardCardCreate(generics.CreateAPIView):
     serializer_class = BoardCardsSerializer
